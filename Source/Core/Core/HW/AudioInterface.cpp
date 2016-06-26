@@ -188,7 +188,7 @@ void RegisterMMIO(MMIO::Mapping* mmio, u32 base)
         {
           DEBUG_LOG(AUDIO_INTERFACE, "Change AIDFR to %s", tmpAICtrl.AIDFR ? "32khz" : "48khz");
           m_Control.AIDFR = tmpAICtrl.AIDFR;
-          g_AIDSampleRate = tmpAICtrl.AIDFR ? 32000 : 48000;
+          g_AIDSampleRate = (tmpAICtrl.AIDFR ? 32000 : 48000) / 2;
           g_sound_stream->GetMixer()->SetDMAInputSampleRate(g_AIDSampleRate);
         }
 
